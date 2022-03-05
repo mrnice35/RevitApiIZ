@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace RevitApiIZ
 {
     [TransactionAttribute(TransactionMode.Manual)]
-    public class NumberSpace : IExternalCommand
+    public class Number : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
@@ -24,7 +24,6 @@ namespace RevitApiIZ
                 .OfClass(typeof(ViewPlan))
                 .OfType<ViewPlan>()
                 .ToList();
-            //View v = doc.ActiveView;
             Transaction trans = new Transaction(doc, "Создание нумерации помещения");
             trans.Start();
             foreach (View view in listView)
